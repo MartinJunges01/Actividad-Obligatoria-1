@@ -17,6 +17,38 @@ public class MenuPrincipal {
 		this.usuarioController = new UsuarioController(new UsuarioVista());
 		this.solicitudController = new SolicitudController(new SolicitudVista());
 		this.scanner = new Scanner(System.in);
+		
+		cargarDatosDePrueba();
+	}
+
+	private void cargarDatosDePrueba() {
+		// Hardcodear Vehiculos
+		modelo.Automovil auto = new modelo.Automovil(101, "Toyota", "Corolla", "Activo", 4, 1.5);
+		modelo.Moto moto = new modelo.Moto(102, "Honda", "CG 150", "Activo", 0.5);
+		modelo.Camion camion = new modelo.Camion(103, "Mercedes", "Atego", "Mantenimiento", 15.0, true);
+		
+		vehiculoController.agregarVehiculo(auto);
+		vehiculoController.agregarVehiculo(moto);
+		vehiculoController.agregarVehiculo(camion);
+		
+		// Hardcodear Usuarios
+		modelo.Cliente cliente1 = new modelo.Cliente(1, "Juan Perez");
+		modelo.Chofer chofer1 = new modelo.Chofer(2, "Ana Gomez");
+		
+		usuarioController.agregarUsuario(cliente1);
+		usuarioController.agregarUsuario(chofer1);
+		
+		// Hardcodear Solicitudes
+		modelo.SolicitudPasajeros solPasajeros = new modelo.SolicitudPasajeros(
+				1001, 15.5, "Centro", "Aeropuerto", auto, cliente1, chofer1, 
+				modelo.Solicitud.EstadoSolicitud.CONFIRMADA, 2);
+				
+		modelo.SolicitudEnvios solEnvios = new modelo.SolicitudEnvios(
+				1002, 45.0, "Almacen A", "Sucursal B", camion, cliente1, chofer1, 
+				modelo.Solicitud.EstadoSolicitud.EN_CURSO, 10.0, true);
+				
+		solicitudController.agregarSolicitud(solPasajeros);
+		solicitudController.agregarSolicitud(solEnvios);
 	}
 
 	public void iniciar() {
