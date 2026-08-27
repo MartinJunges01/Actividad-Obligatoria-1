@@ -16,4 +16,9 @@ public class Moto extends Vehiculo {
 		this.volCaja = volCaja;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " -> Moto [volCaja=" + volCaja + "]";
+	}
+
 }

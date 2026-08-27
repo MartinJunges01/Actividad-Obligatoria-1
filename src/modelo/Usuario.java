@@ -1,6 +1,6 @@
 package modelo;
 
-public class Usuario {
+public abstract class Usuario {
 	private int id;
 	private String nombre;
 
@@ -26,4 +26,8 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", tipo=" + this.getClass().getSimpleName() + "]";
+	}
 }

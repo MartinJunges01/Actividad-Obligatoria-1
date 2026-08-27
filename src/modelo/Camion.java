@@ -26,4 +26,9 @@ public class Camion extends Vehiculo {
 		this.refrigerado = refrigerado;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " -> Camion [limCap=" + limCap + ", refrigerado=" + refrigerado + "]";
+	}
+
 }

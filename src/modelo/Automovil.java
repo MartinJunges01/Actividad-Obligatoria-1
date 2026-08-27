@@ -27,4 +27,9 @@ public class Automovil extends Vehiculo {
 		this.volEquipaje = volEquipaje;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + " -> Automovil [capAsientos=" + capAsientos + ", volEquipaje=" + volEquipaje + "]";
+	}
+
 }

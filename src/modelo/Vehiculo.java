@@ -1,6 +1,6 @@
 package modelo;
 
-public class Vehiculo {
+public abstract class Vehiculo {
 	private int identificacion;
 	private String marca;
 	private String modelo;
@@ -44,5 +44,11 @@ public class Vehiculo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return "Vehiculo [identificacion=" + identificacion + ", marca=" + marca + ", modelo=" + modelo + ", estado="
+				+ estado + ", tipo=" + this.getClass().getSimpleName() + "]";
 	}
 }

@@ -1,26 +1,32 @@
 package modelo;
 
-public class Solicitud {
+public abstract class Solicitud {
 	private int id;
 	private double distRecorrido;
 	private String origen;
 	private String destino;
-	private Vehiculo tipoVehiculo;
+	private Vehiculo vehiculo;
 	private double precio;
 	private Cliente cliente;
 	private Chofer chofer;
 
-	public Solicitud(int id, double distRecorrido, String origen, String destino, Vehiculo tipoVehiculo,
-			double precio, Cliente cliente, Chofer chofer) {
-		super();
+	public enum EstadoSolicitud {
+		INICIADA, CONFIRMADA, EN_CURSO, FINALIZADA, CANCELADA
+	}
+
+	private EstadoSolicitud estadoActual;
+
+	public Solicitud(int id, double distRecorrido, String origen, String destino, Vehiculo vehiculo, Cliente cliente,
+			Chofer chofer, EstadoSolicitud estadoActual) {
 		this.id = id;
 		this.distRecorrido = distRecorrido;
 		this.origen = origen;
 		this.destino = destino;
-		this.tipoVehiculo = tipoVehiculo;
-		this.precio = precio;
+		this.vehiculo = vehiculo;
 		this.cliente = cliente;
 		this.chofer = chofer;
+		this.estadoActual = estadoActual;
+		this.precio = this.calcularPrecio();
 	}
 
 	public int getId() {
@@ -55,12 +61,12 @@ public class Solicitud {
 		this.destino = destino;
 	}
 
-	public Vehiculo getTipoVehiculo() {
-		return tipoVehiculo;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 
-	public void setTipoVehiculo(Vehiculo tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 
 	public double getPrecio() {
@@ -70,6 +76,8 @@ public class Solicitud {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+
+	public abstract double calcularPrecio();
 
 	public Cliente getCliente() {
 		return cliente;
@@ -87,4 +95,22 @@ public class Solicitud {
 		this.chofer = chofer;
 	}
 
+	public EstadoSolicitud getEstadoActual() {
+		return estadoActual;
+	}
+
+	public void setEstadoActual(EstadoSolicitud estadoActual) {
+		this.estadoActual = estadoActual;
+	}
+
+	@Override
+	public String toString() {
+		return "Solicitud [id=" + id + ", distRecorrido=" + distRecorrido + ", origen=" + origen + ", destino=" + destino
+				+ ", vehiculoId=" + (vehiculo != null ? vehiculo.getIdentificacion() : "N/A") 
+				+ ", precio=" + precio 
+				+ ", clienteId=" + (cliente != null ? cliente.getId() : "N/A") 
+				+ ", choferId=" + (chofer != null ? chofer.getId() : "N/A") 
+				+ ", estado=" + estadoActual 
+				+ ", tipo=" + this.getClass().getSimpleName() + "]";
+	}
 }
