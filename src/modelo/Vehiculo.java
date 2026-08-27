@@ -1,12 +1,12 @@
-package Modelo;
+package modelo;
 
-public class vehiculo {
+public class Vehiculo {
 	private int identificacion;
 	private String marca;
 	private String modelo;
 	private String estado;
 
-	public vehiculo(int identificacion, String marca, String modelo, String estado) {
+	public Vehiculo(int identificacion, String marca, String modelo, String estado) {
 		super();
 		this.identificacion = identificacion;
 		this.marca = marca;

@@ -1,10 +1,10 @@
-package Modelo;
+package modelo;
 
-public class usuario {
+public class Usuario {
 	private int id;
 	private String nombre;
 
-	public usuario(int id, String nombre) {
+	public Usuario(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
